@@ -17,6 +17,14 @@ PRD and decision log: `_bmad-output/planning-artifacts/prds/prd-Member-360-Data-
 - **`data/raw/` is read-only.** It stands in for upstream microservices this project does not own. Never edit, clean, or regenerate it — if source data looks wrong, that is a finding to surface, not a file to fix.
 - Check `openspec/changes/` for the relevant change before coding
 
+## Gates (enforced, not just written down)
+
+`data/raw/` read-only and no PII columns are now checks, alongside the spec and docs rules. They run on commit (lefthook) and on every PR (required checks `ci`, `spec-gate`, `attest`, `kt-docs`). See `docs/kt/left-shift-gates/README.md`.
+
+- Commit with the venv active: `git commit` runs `python tools/leftshift/attest.py make` (gates, then a headless Claude review). Never `--no-verify`: CI's `attest` check fails without the local run.
+- `.attestations/` is written by the harness, never by hand.
+- Tests that create git repos must strip `GIT_DIR`, `GIT_WORK_TREE`, `GIT_INDEX_FILE`.
+
 ## Structure
 
 ```

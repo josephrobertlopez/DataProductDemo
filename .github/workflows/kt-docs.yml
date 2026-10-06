@@ -1,0 +1,25 @@
+name: kt-docs
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  kt-docs:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      # Under act, checks.py reads the changed files from the event payload
+      # (see .github/act-events/) instead of diffing against a base branch.
+      - name: Require an added, changed or renamed file under docs/kt/
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        shell: bash
+        run: python tools/leftshift/checks.py kt-docs --base "origin/$BASE_REF"

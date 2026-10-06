@@ -1,0 +1,211 @@
+{
+  "AC-1": {
+    "covers": [
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_unchanged_raw_is_clean",
+        "line": 64
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_staged_edit_is_reported",
+        "line": 70
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_moving_a_file_out_of_raw_is_a_deletion_not_a_rename",
+        "line": 76
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_branch_against_base",
+        "line": 81
+      }
+    ],
+    "id": "AC-1",
+    "implements": [
+      {
+        "file": "tools/leftshift/checks.py",
+        "function": "raw_changes",
+        "line": 50
+      }
+    ]
+  },
+  "AC-2": {
+    "covers": [
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_raw_and_non_csv_files_are_not_checked",
+        "line": 101
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_respelled_pii_columns_are_caught_in_the_index",
+        "line": 106
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_committed_csv_is_checked_at_a_revision",
+        "line": 113
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_unstaged_edit_does_not_count_for_the_index",
+        "line": 119
+      }
+    ],
+    "id": "AC-2",
+    "implements": [
+      {
+        "file": "tools/leftshift/checks.py",
+        "function": "pii_columns",
+        "line": 75
+      }
+    ]
+  },
+  "AC-3": {
+    "covers": [
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_requirements_without_scenarios_are_listed",
+        "line": 127
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_a_complete_spec_is_clean",
+        "line": 145
+      }
+    ],
+    "id": "AC-3",
+    "implements": [
+      {
+        "file": "tools/leftshift/checks.py",
+        "function": "missing_scenarios",
+        "line": 92
+      }
+    ]
+  },
+  "AC-4": {
+    "covers": [
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_only_files_under_docs_kt_count",
+        "line": 153
+      }
+    ],
+    "id": "AC-4",
+    "implements": [
+      {
+        "file": "tools/leftshift/checks.py",
+        "function": "kt_docs",
+        "line": 134
+      }
+    ]
+  },
+  "AC-5": {
+    "covers": [
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_green_gates_and_clean_review_write_a_staged_a2a_task",
+        "line": 216
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_a_red_gate_stops_before_the_review",
+        "line": 231
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_a_verified_high_finding_fails_and_is_not_staged",
+        "line": 240
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_a_high_finding_that_points_at_nothing_is_ignored",
+        "line": 246
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_an_oversized_change_is_refused_not_truncated",
+        "line": 252
+      }
+    ],
+    "id": "AC-5",
+    "implements": [
+      {
+        "file": "tools/leftshift/attest.py",
+        "function": "make",
+        "line": 244
+      }
+    ]
+  },
+  "AC-6": {
+    "covers": [
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_data_csv_attestations_and_vendored_gate_are_withheld",
+        "line": 260
+      }
+    ],
+    "id": "AC-6",
+    "implements": [
+      {
+        "file": "tools/leftshift/attest.py",
+        "function": "review_files",
+        "line": 134
+      }
+    ]
+  },
+  "AC-7": {
+    "covers": [
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_a_fresh_attestation_verifies",
+        "line": 291
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_no_attestation_means_the_local_run_did_not_happen",
+        "line": 295
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_code_changed_after_attesting_is_stale",
+        "line": 302
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_failed_state_and_verdict_are_rejected",
+        "line": 308
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_a_missing_or_red_gate_is_rejected",
+        "line": 317
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_verified_findings_are_rechecked",
+        "line": 328
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_not_an_a2a_task",
+        "line": 339
+      },
+      {
+        "file": "tests/test_leftshift.py",
+        "function": "test_not_json",
+        "line": 347
+      }
+    ],
+    "id": "AC-7",
+    "implements": [
+      {
+        "file": "tools/leftshift/attest.py",
+        "function": "verify",
+        "line": 298
+      }
+    ]
+  }
+}

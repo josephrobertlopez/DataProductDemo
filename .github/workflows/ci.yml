@@ -1,0 +1,35 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Unit tests
+        run: python -m unittest discover -s tests -t . -v
+      # Same commands lefthook runs before the commit, here against the base
+      # branch so they cannot be skipped with --no-verify.
+      - name: data/raw is read-only
+        shell: bash
+        env:
+          BASE_REF: ${{ github.base_ref || 'main' }}
+        run: python tools/leftshift/checks.py raw --base "origin/$BASE_REF"
+      - name: No PII column names outside data/raw
+        run: python tools/leftshift/checks.py pii --rev HEAD

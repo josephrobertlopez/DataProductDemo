@@ -1,0 +1,7 @@
+// specgate L1 runs markdownlint on every PRD. Prose here is not hard-wrapped,
+// so MD013 (80-column lines) would only teach people to ignore the output.
+{
+  "config": {
+    "MD013": false
+  }
+}

@@ -1,0 +1,4 @@
+# A required review on the two things a gate cannot judge: whether the
+# knowledge-transfer doc is any good, and whether an attestation is genuine.
+docs/kt/**       @josephrobertlopez @Bradley-Agyei
+.attestations/** @josephrobertlopez @Bradley-Agyei

@@ -1,0 +1,7 @@
+# LF everywhere: the attestation digest and trace.json must be the same bytes
+# on Windows and on the Linux runner.
+* text=auto eol=lf
+
+# Except data: the extracts were committed with CRLF, data/raw is read-only,
+# and renormalising them would show every file as changed.
+data/** -text

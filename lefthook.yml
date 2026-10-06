@@ -1,0 +1,21 @@
+# Left shift: the same gates GitHub requires, run here first.
+# Needs the venv active (python must have tools/specgate installed), Node 22,
+# and a logged-in Claude Code CLI.
+#
+# pre-commit is one command on purpose: attest.py runs every gate in order,
+# stops at the first red one, and only then calls the model, so a review is
+# never paid for on a change that would fail anyway.
+pre-commit:
+  commands:
+    leftshift:
+      run: python tools/leftshift/attest.py make
+
+pre-push:
+  piped: true
+  commands:
+    1_attest:
+      run: python tools/leftshift/attest.py verify --rev HEAD
+    2_kt-docs:
+      run: python tools/leftshift/checks.py kt-docs --base origin/main
+    3_specgate:
+      run: python tools/leftshift/checks.py specgate --layers L3-L5

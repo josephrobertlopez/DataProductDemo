@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PRD Schema",
+  "description": "JSON Schema for Product Requirements Document frontmatter",
+  "type": "object",
+  "required": ["feature", "acs"],
+  "properties": {
+    "feature": {
+      "type": "string",
+      "description": "Feature name"
+    },
+    "acs": {
+      "type": "array",
+      "description": "Acceptance criteria",
+      "items": {
+        "type": "object",
+        "required": ["id", "given", "when", "then", "tests"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^AC-[0-9]+$",
+            "description": "Acceptance criterion identifier"
+          },
+          "given": {
+            "type": "string",
+            "description": "Given context"
+          },
+          "when": {
+            "type": "string",
+            "description": "When action"
+          },
+          "then": {
+            "type": "string",
+            "description": "Then outcome"
+          },
+          "tests": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            },
+            "description": "Test cases for this criterion"
+          }
+        }
+      }
+    }
+  }
+}

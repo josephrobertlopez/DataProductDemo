@@ -1,0 +1,100 @@
+{
+  "artifacts": [
+    {
+      "artifactId": "attestation",
+      "name": "left-shift attestation",
+      "parts": [
+        {
+          "data": {
+            "evaluator": {
+              "costUsd": 0.33548560000000005,
+              "model": "claude-sonnet-5",
+              "sessionId": "a8de9733-6910-46c7-99bc-b63c83b79c0c"
+            },
+            "findings": {
+              "unverified": [],
+              "verified": [
+                {
+                  "ac": "AC-4",
+                  "claim": "The kt-docs failure message tells the author to 'add or change' a file under docs/kt/, omitting that a rename also satisfies the check (the underlying changed_files/kt_docs logic correctly includes renames via --diff-filter=AMR, but the printed guidance does not mention it), which can mislead a developer reading the failure.",
+                  "file": "tools/leftshift/checks.py",
+                  "line": 207,
+                  "quote": "the PR must add or change a file under",
+                  "severity": "LOW"
+                }
+              ]
+            },
+            "gates": [
+              {
+                "exit": 0,
+                "name": "raw"
+              },
+              {
+                "exit": 0,
+                "name": "pii"
+              },
+              {
+                "exit": 0,
+                "name": "openspec"
+              },
+              {
+                "exit": 0,
+                "name": "scenarios"
+              },
+              {
+                "exit": 0,
+                "name": "specgate"
+              },
+              {
+                "exit": 0,
+                "name": "unittest"
+              }
+            ],
+            "modelVerdict": "pass",
+            "promptSha256": "b49cd96c7b1b7471516e4f7e5f16d3355d614443708bb3086b096b38e56e98bf",
+            "subject": {
+              "algo": "sha256",
+              "digest": "98001f13b8aefc380e27be6ec48118bc791e2b8518324974d9be44567e1669e2",
+              "excludes": [
+                ".attestations/"
+              ]
+            },
+            "summary": "The staged left-shift-gates implementation (checks.py, attest.py, workflows, spec, and tests) closely matches every AC's given/when/then, and the trace.json line references, gate wiring, and PII/raw/scenario/kt-docs/attest logic all check out against the tests that cover them. The only issue found is a cosmetic wording gap in the kt-docs failure message that omits \"renames\" even though the check itself correctly honors renamed files.",
+            "verdict": "pass"
+          },
+          "mediaType": "application/json"
+        }
+      ]
+    }
+  ],
+  "contextId": "left-shift",
+  "history": [
+    {
+      "messageId": "msg-d2fa6e5f-2290-4d27-8e87-aacf0bb0673f",
+      "parts": [
+        {
+          "text": "review the staged change against its acceptance criteria; prompt sha256 b49cd96c7b1b7471516e4f7e5f16d3355d614443708bb3086b096b38e56e98bf"
+        }
+      ],
+      "role": "ROLE_USER"
+    }
+  ],
+  "id": "att-556e0719-d08b-4b1c-92ae-24583ee51226",
+  "metadata": {
+    "a2aVersion": "1.0.0",
+    "producer": "tools/leftshift/attest.py"
+  },
+  "status": {
+    "message": {
+      "messageId": "msg-bce2e4eb-0c2e-4cf2-9ed2-a6350c4e7272",
+      "parts": [
+        {
+          "text": "verdict: pass (0 verified HIGH findings)"
+        }
+      ],
+      "role": "ROLE_AGENT"
+    },
+    "state": "TASK_STATE_COMPLETED",
+    "timestamp": "2026-10-06T17:23:20Z"
+  }
+}

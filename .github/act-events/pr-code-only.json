@@ -1,0 +1,4 @@
+{
+  "pull_request": {"base": {"ref": "main"}, "head": {"sha": ""}},
+  "act_changed_files": ["tools/leftshift/checks.py"]
+}
